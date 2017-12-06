@@ -1,6 +1,6 @@
 import * as bb from 'bluebird'
 import * as express from 'express'
-import * as mapValues from 'lodash.mapvalues'
+import mapValues = require('lodash.mapvalues')
 
 import { InfoConfig } from './infoConfig'
 import { loadVersionFile } from './versionFile'
