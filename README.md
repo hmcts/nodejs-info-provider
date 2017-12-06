@@ -1,8 +1,7 @@
+# nodejs-info-provider
+
 [![Build Status](https://travis-ci.org/{{github-user-name}}/{{github-app-name}}.svg?branch=master)](https://travis-ci.org/{{github-user-name}}/{{github-app-name}}.svg?branch=master)  
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
-
-# Using this module in other modules
-
 [![Greenkeeper badge](https://badges.greenkeeper.io/hmcts/nodejs-info-provider.svg)](https://greenkeeper.io/)
 
 ```bash
