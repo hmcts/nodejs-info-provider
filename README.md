@@ -3,6 +3,8 @@
 
 # Using this module in other modules
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/hmcts/nodejs-info-provider.svg)](https://greenkeeper.io/)
+
 ```bash
 $ yarn add @hmcts/info-provider
 ```
