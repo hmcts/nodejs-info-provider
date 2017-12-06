@@ -1,9 +1,9 @@
 {
   "name": "@hmcts/info-provider",
-  "version": "0.0.0",
+  "version": "0.0.6",
   "description": "info-provider",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/hmcts/nodejs-info-provider",
   "author": {
     "name": "",
     "email": "",
@@ -21,7 +21,6 @@
     "clean": "rimraf lib && rimraf coverage",
     "format": "prettier --write \"{src,__tests__}/**/*.ts\" --single-quote --trailing-comma es5",
     "lint": "tslint --project tsconfig.json --format verbose",
-    "prepublishOnly": "yarn build",
     "prebuildOnly": "yarn clean && yarn format && yarn lint && echo Using TypeScript && tsc --version",
     "build": "tsc --pretty",
     "test": "jest",
