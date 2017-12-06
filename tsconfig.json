@@ -4,7 +4,9 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "lib": [
-      "esnext"
+      "es6",
+      "esnext",
+      "dom"
     ],
     "target": "es2015",
     "strict": true,
@@ -21,6 +23,7 @@
   ],
   "exclude": [
     "node_modules",
-    "**/*-spec.ts"
+    "**/*-spec.ts",
+    "src/__mocks__/**"
   ]
 }

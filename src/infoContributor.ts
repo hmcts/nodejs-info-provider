@@ -14,8 +14,8 @@ export class InfoContributor {
       .get(requestConfig)
       .catch((err: Error) => {
         return {
-          errStackTrace: err,
-          error: `Error calling ${this.url}`
+          error: `Error calling ${this.url}`,
+          errorStackTrace: err
         }
       })
   }
