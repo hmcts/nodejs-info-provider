@@ -1,8 +1,6 @@
-export class InfoResponse {
-  build: object;
-  [key: string]: object | undefined;
+import { VersionInfo } from './versionInfo';
 
-  constructor(build: object) {
-    this.build = build;
-  }
+export interface InfoResponse {
+  build: VersionInfo;
+  [key: string]: object | undefined;
 }

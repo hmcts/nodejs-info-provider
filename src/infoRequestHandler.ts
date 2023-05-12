@@ -4,6 +4,7 @@ import { InfoResponse } from './infoResponse';
 import { InfoConfig } from './infoConfig';
 import { NameWithResult } from './nameWithResult';
 import { loadVersionFile } from './versionFile';
+import { VersionInfo } from './versionInfo';
 
 export function infoRequestHandler(config: InfoConfig): express.RequestHandler {
   return (req: express.Request, res: express.Response) => {
@@ -18,7 +19,7 @@ export function infoRequestHandler(config: InfoConfig): express.RequestHandler {
     });
 
     Promise.all([loadVersionFile(), ...promises]).then((results) => {
-      const build = results.reverse().pop() as object;
+      const build = results.reverse().pop() as VersionInfo;
       const json: InfoResponse = {
         build,
       };
