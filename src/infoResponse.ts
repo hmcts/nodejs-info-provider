@@ -1,5 +1,8 @@
 export class InfoResponse {
-  build: any;
-  [key: string]: any;
-  extraBuildInfo?: any;
+  build: object;
+  [key: string]: object | undefined;
+
+  constructor(build: object) {
+    this.build = build;
+  }
 }
