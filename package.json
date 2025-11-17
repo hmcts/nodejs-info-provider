@@ -21,7 +21,7 @@
     "watch:test": "jest --watch"
   },
   "peerDependencies": {
-    "express": "^4.0.0 || ^5.0.0"
+    "express": ">=4"
   },
   "dependencies": {
     "js-yaml": "^4.1.0"
