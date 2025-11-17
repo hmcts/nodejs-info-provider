@@ -1,10 +1,17 @@
 # nodejs-info-provider
 
 ```bash
-$ yarn add @hmcts/info-provider
+yarn add @hmcts/info-provider
+```
+
+> For nodejs-info-provider to work you'll need to have express installed
+
+```bash
+yarn add express
 ```
 
 Typescript:
+
 ```ts
 import { InfoContributor, infoRequestHandler  } from '@hmcts/info-provider'
 
@@ -39,7 +46,7 @@ express.Router()
 
 ```
 
-### Making updates
+## Making updates
 
 Clone the repo and make the updates locally e.g. upgrading yarn packages.
 
@@ -49,6 +56,6 @@ This repo uses classic Yarn i.e. versions 1.x.
 
 Make sure you bump the version in pacakge.json prior to merging to master.
 
-Once your changes have been merged into master, push a new tag to the repo and create a new release.
+Releases are managed on [github](https://github.com/hmcts/nodejs-info-provider/releases).
 
-The release will initiate a github action run to publish the new version to npmjs.com.
+Once the release has been published a github action is run to publish the new version to npmjs.com.
