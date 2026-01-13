@@ -108,4 +108,4 @@ Creating the release will trigger a GitHub Actions workflow that:
 - builds the package
 - publishes it to npm using trusted (OIDC) publishing
 
-You do **not** need to push tags manually.
+> You do **not** need to push tags manually.
