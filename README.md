@@ -60,7 +60,7 @@ Failures in downstream `/info` calls do not cause the endpoint itself to fail.
 - Node.js >= 18.12
 - Express >= 4
 
-Express is a peer dependency and must be provided by the consuming application.
+> Express is a peer dependency and must be provided by the consuming application.
 
 ## Contributing
 
