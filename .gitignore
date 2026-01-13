@@ -5,3 +5,9 @@ npm-debug.log
 lib
 lib_test
 yarn-error.log
+
+.idea/
+*.iml
+
+.pnp.*
+.yarn/*
