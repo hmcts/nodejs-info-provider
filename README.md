@@ -87,6 +87,7 @@ yarn install
 
 ```bash
 yarn build
+yarn lint
 yarn test
 ```
 
