@@ -1,15 +1,24 @@
 # nodejs-info-provider
 
+`@hmcts/info-provider` is a small Express helper that aggregates `/info` data from
+your service and from downstream services into a single endpoint.
+
+## Installation
+
 ```bash
-$ yarn add @hmcts/info-provider
+yarn add @hmcts/info-provider
 ```
 
-Typescript:
-```ts
-import { InfoContributor, infoRequestHandler  } from '@hmcts/info-provider'
+## Usage
 
-express.Router()
-  .get('/info', infoRequestHandler({
+### Typescript
+
+```ts
+import { InfoContributor, infoRequestHandler } from '@hmcts/info-provider'
+
+express.Router().get(
+  '/info',
+  infoRequestHandler({
     info: {
       'fees-register': new InfoContributor('https://fees-register.com/info')
     },
@@ -17,38 +26,86 @@ express.Router()
       featureToggles: config.get('featureToggles'),
       hostname: hostname()
     }
-  }))
-
+  })
+)
 ```
 
-- Javascript -
+### JavaScript
 
 ```js
 const { InfoContributor, infoRequestHandler } = require('@hmcts/info-provider')
 
-express.Router()
-  .get('/info', infoRequestHandler({
+express.Router().get(
+  '/info',
+  infoRequestHandler({
     info: {
-      'fees-register': new InfoContributor('http://fees-register.com/info')
+      'fees-register': new InfoContributor('https://fees-register.com/info')
     },
     extraBuildInfo: {
       featureToggles: config.get('featureToggles'),
       hostname: hostname()
     }
-  }))
-
+  })
+)
 ```
 
-### Making updates
+`InfoContributor` represents a downstream service that exposes an `/info` endpoint.  
+Each contributor is queried when `/info` is requested, and the results are combined  
+into a single response.
 
-Clone the repo and make the updates locally e.g. upgrading yarn packages.
+Failures in downstream `/info` calls do not cause the endpoint itself to fail.
 
-If you're upgrading packages, ensure you run `yarn install` before committing.
+## Requirements
 
-This repo uses classic Yarn i.e. versions 1.x.
+- Node.js >= 18.12
+- Express >= 4
 
-Make sure you bump the version in pacakge.json prior to merging to master.
+> Express is a peer dependency and must be provided by the consuming application.
 
-Once your changes have been merged into master, push a new tag to the repo and create a new release.
+## Contributing
 
-The release will initiate a github action run to publish the new version to npmjs.com.
+### Getting started
+
+This repository uses **Yarn Berry (v4)** via **Corepack**.
+
+Before installing dependencies, ensure Corepack is enabled:
+
+```bash
+corepack enable
+```
+
+Then install dependencies:
+
+```bash
+yarn install
+```
+
+### Making changes
+
+- Make changes on a branch
+- Ensure tests pass:
+
+```bash
+yarn build
+yarn lint
+yarn test
+```
+
+- If you upgrade dependencies, ensure the lockfile is updated and committed.
+
+### Versioning and releases
+
+This package is released via **GitHub Releases** and published automatically to npm.
+
+To release a new version:
+
+1. Update the `version` field in `package.json`
+2. Merge the change into `master`
+3. Create a new GitHub Release for that version
+
+Creating the release will trigger a GitHub Actions workflow that:
+
+- builds the package
+- publishes it to npm using trusted (OIDC) publishing
+
+> You do **not** need to push tags manually.
