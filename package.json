@@ -3,7 +3,10 @@
   "version": "1.4.0",
   "description": "info-provider",
   "license": "MIT",
-  "repository": "https://github.com/hmcts/nodejs-info-provider",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hmcts/nodejs-info-provider.git"
+  },
   "files": [
     "lib"
   ],
