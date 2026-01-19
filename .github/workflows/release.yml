@@ -25,5 +25,26 @@ jobs:
       - run: yarn install --immutable
       - run: yarn build
 
-      - run: npm i -g npm@^11.5.1
-      - run: npm publish --access public
+      - name: Ensure npm version
+        run: |
+          npm --version
+          npm i -g npm@11.5.1
+          npm --version
+
+      - name: Publish (OIDC Trusted Publishing)
+        run: |
+          # Force OIDC Trusted Publishing (no tokens allowed for this package)
+          unset NODE_AUTH_TOKEN
+
+          # Use a clean npmrc with only the registry
+          export NPM_CONFIG_USERCONFIG="$RUNNER_TEMP/npmrc-noauth"
+          printf "registry=https://registry.npmjs.org/\n" > "$NPM_CONFIG_USERCONFIG"
+
+          # Defensive: remove any injected auth token config
+          npm config delete //registry.npmjs.org/:_authToken || true
+          npm config delete _authToken || true
+
+          # Sanity check: ensure build output exists
+          test -d lib && echo "lib exists" || (echo "lib missing" && exit 1)
+
+          npm publish --access public --provenance
